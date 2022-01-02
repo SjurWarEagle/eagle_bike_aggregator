@@ -33,7 +33,7 @@ export class Start {
             password: process.env.MQTT_PASSWORD,
             reconnectPeriod: 1000,
         };
-        console.log('mqttConfig', mqttConfig);
+        // console.log('mqttConfig', mqttConfig);
 
         const client = await connect(this.connectUrl, mqttConfig)
 
