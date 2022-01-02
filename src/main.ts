@@ -6,7 +6,7 @@ import {config} from 'dotenv';
 config();
 
 async function bootstrap() {
-    new Start().start();
+    await new Start().start();
 
     const port =42544;
 
@@ -17,5 +17,5 @@ async function bootstrap() {
 
 }
 
-bootstrap().then(()=>{
+bootstrap().then(async ()=>{
 });
