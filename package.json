@@ -6,7 +6,7 @@
     "build": "nest build",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "nest start",
     "start": "ts-node src/start.ts",
     "dependencies:update": "ncu -u -x typescript,ngx-mqtt",
     "dependencies:install": "npm install",
