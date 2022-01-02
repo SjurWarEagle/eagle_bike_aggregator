@@ -1,9 +1,9 @@
 import {connect, MqttClient} from "mqtt"
-import {config} from 'dotenv';
 import * as process from "process";
 import {BikeData} from "./types/bike-data";
 import {BikeDataAggregated} from "./types/bike-data-aggregated";
 import {BikeDataAggregate} from "./services/bike-data-aggregate";
+import {config} from 'dotenv';
 
 config();
 
@@ -50,7 +50,7 @@ export class Start {
                 client.on('message', async (topic, message, packet) => {
                     // when a message arrives, do something with it
                     // console.log(bikeDataAggregated);
-                    // console.log("Received '" + message + "' on '" + topic + "'");
+                    console.log("Received '" + message + "' on '" + topic + "'");
                     const bikeData = JSON.parse(message.toString()) as BikeData;
                     this.bikeDataAggregated = await this.serviceBikeDataAggregate.aggregate(bikeData);
                     this.publish(client, this.bikeDataAggregated);
