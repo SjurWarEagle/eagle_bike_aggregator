@@ -1,0 +1,20 @@
+{
+  "name": "jscmd",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/start.ts"
+  },
+  "dependencies": {
+    "mqtt": "2.18.9",
+    "dotenv": "10.0.0"
+  },
+  "devDependencies": {
+    "npm-check-updates": "11.8.3",
+    "ts-node": "9.1.1",
+    "@types/node": "17.0.6",
+    "tslint": "5.20.1",
+    "typescript": "2.7.2",
+    "rimraf": "3.0.2"
+  }
+}
