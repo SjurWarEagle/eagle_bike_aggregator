@@ -13,7 +13,7 @@ RUN mkdir -p /project
 COPY . /project
 WORKDIR /project
 RUN cd
-RUN cd server && npm install && npm run build # && rm -rf node_modules
+RUN npm install && npm run build # && rm -rf node_modules
 #TODO remove node_modules when the build is used to start
 #RUN cd server && npm install && npm run build && rm -fr node_modules
 
