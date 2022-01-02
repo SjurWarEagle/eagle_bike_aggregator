@@ -2,12 +2,11 @@ version: '3.7'
 
 services:
   eagle-bike-aggregator:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-    environment:
-        - MQTT_CLIENT_ID="bikeAggregator"
-        - MQTT_USER="bikeAggregator"
-        - MQTT_PASSWORD="XXX"
-        - MQTT_OUTPUT_TOPIC_BASE="/livingroom/bikeAggregator/"
     restart: unless-stopped
+    image: wareagledocker/eagle-bike-aggregator:latest
+    container_name: eagle-bike-aggregator
+    environment:
+      - MQTT_CLIENT_ID="bikeAggregator"
+      - MQTT_USER="bikeAggregator"
+      - MQTT_PASSWORD="7gXxbJFnme63Md"
+      - MQTT_OUTPUT_TOPIC_BASE="/livingroom/bikeAggregator/"
