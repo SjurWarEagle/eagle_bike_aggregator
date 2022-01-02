@@ -25,14 +25,17 @@ export class Start {
 
     public async start(): Promise<void> {
 
-        const client = await connect(this.connectUrl, {
+        const mqttConfig = {
             clientId: this.clientId,
             clean: true,
             connectTimeout: 4000,
             username: process.env.MQTT_USER,
             password: process.env.MQTT_PASSWORD,
             reconnectPeriod: 1000,
-        })
+        };
+        console.log('mqttConfig', mqttConfig);
+
+        const client = await connect(this.connectUrl, mqttConfig)
 
         client.on('connect', () => { // When connected
 
@@ -47,7 +50,7 @@ export class Start {
 
             // subscribe to a topic
             client.subscribe('/livingroom/bike', () => {
-                client.on('message', async (topic, message, packet) => {
+                client.on('message', async (topic, message) => {
                     // when a message arrives, do something with it
                     // console.log(bikeDataAggregated);
                     console.log("Received '" + message + "' on '" + topic + "'");
@@ -60,12 +63,14 @@ export class Start {
         });
 
 
-        client.on('message', function (topic, message) {
-            // message is Buffer
-            // console.log(JSON.parse(message.toString()) as BikeData);
-            const bikeData = JSON.parse(message.toString()) as BikeData;
-            // client.end()
-        })
+        // client.on('message', function (topic, message) {
+        //     // message is Buffer
+        //     // console.log(JSON.parse(message.toString()) as BikeData);
+        //
+        //     // const bikeData = JSON.parse(message.toString()) as BikeData;
+        //
+        //     // client.end()
+        // })
 
     }
 
