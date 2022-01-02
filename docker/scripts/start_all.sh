@@ -1,4 +1,4 @@
 #service nginx restart
-cd /project/server/dist/
+cd /project/
 #TODO do not use src folder build build, that requires less space and tools
-node main
+npm run start:prod
