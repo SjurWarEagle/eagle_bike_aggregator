@@ -1,2 +1,2 @@
 cd /project/
-npm run start
+npm run start:prod
