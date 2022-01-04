@@ -11,10 +11,12 @@ export class BikeDataAggregate {
         const currentDayOfMonth = this.getCurrentDayOfMonth();
         let totalDistanceOfDay;
         let rememberedDistance;
+
         if (currentDayOfMonth !== this.lastProcessingDayOfMonth) {
             this.lastProcessingDayOfMonth = currentDayOfMonth;
             this.rememberedData = new BikeDataAggregated();
             this.rememberedDistance = 0;
+            this.totalDistanceOfDay = 0;
             totalDistanceOfDay = 0;
             //TODO other reset tasks
         }

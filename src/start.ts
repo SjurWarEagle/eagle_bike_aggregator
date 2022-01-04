@@ -33,20 +33,9 @@ export class Start {
             password: process.env.MQTT_PASSWORD,
             reconnectPeriod: 1000,
         };
-        // console.log('mqttConfig', mqttConfig);
-
         const client = await connect(this.connectUrl, mqttConfig)
 
         client.on('connect', () => { // When connected
-
-            // // subscribe to a topic
-            // client.subscribe('relay', () => {
-            //     // when a message arrives, do something with it
-            //     client.on('message', (topic, message, packet) => {
-            //         // console.log(packet);
-            //         console.log("Received '" + message + "' on '" + topic + "'");
-            //     });
-            // });
 
             // subscribe to a topic
             client.subscribe('/livingroom/bike', () => {
@@ -61,16 +50,6 @@ export class Start {
             });
 
         });
-
-
-        // client.on('message', function (topic, message) {
-        //     // message is Buffer
-        //     // console.log(JSON.parse(message.toString()) as BikeData);
-        //
-        //     // const bikeData = JSON.parse(message.toString()) as BikeData;
-        //
-        //     // client.end()
-        // })
 
     }
 
