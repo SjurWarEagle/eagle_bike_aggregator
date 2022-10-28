@@ -8,7 +8,7 @@ import {config} from 'dotenv';
 config();
 
 export class Start {
-    private connectUrl = `mqtt://192.168.73.148`
+    private connectUrl = process.env.MQTT_URL
     private clientId: string = process.env.MQTT_CLIENT_ID;
     private mqttOutputTopicBase = process.env.MQTT_OUTPUT_TOPIC_BASE;
     private bikeDataAggregated = new BikeDataAggregated();
@@ -18,12 +18,14 @@ export class Start {
         // // publish a message to a topic
         const message = JSON.stringify(bikeDataAggregated);
         client.publish(this.mqttOutputTopicBase + 'data', message, () => {
-            // console.log("Message of ", message, " is published");
+            console.log("Message with data '", message, "' is published");
             // client.end(); // Close the connection when published
         });
     }
 
     public async start(): Promise<void> {
+
+        console.log('using server ' + this.connectUrl);
 
         const mqttConfig = {
             clientId: this.clientId,

@@ -6,6 +6,7 @@ services:
     image: wareagledocker/eagle-bike-aggregator:latest
     container_name: eagle-bike-aggregator
     environment:
+      - MQTT_URL="mqtt://192.168.1.49"
       - MQTT_CLIENT_ID="bikeAggregator"
       - MQTT_USER="bikeAggregator"
       - MQTT_PASSWORD="7gXxbJFnme63Md"
